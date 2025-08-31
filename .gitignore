@@ -1,1 +1,211 @@
-infrastructure
+# --------------------------------------------------------------------------------
+# Projetos F# / .NET
+# --------------------------------------------------------------------------------
+
+# Diretórios de build
+bin/
+obj/
+
+# Artifacts
+artifacts/
+
+# Logs
+*.log
+logs/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Bb]uild/
+bld/
+[Bb]inaries/
+
+# Visual Studio 2015/2017/2019/2022
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+
+# Visual Studio for Mac
+*.vs/
+*.approj
+
+# MSBuild
+!packages/
+*.dotCover
+
+# .NET 6+ Local Tools
+.toolstargeting
+.toolsversion
+
+# Publish
+publish/
+Publish/
+
+# Dependency directories
+**/project.lock.json
+**/project.fragment.lock.json
+**/packages.lock.json
+**/*.nuget.props
+**/*.nuget.targets
+
+# --------------------------------------------------------------------------------
+# JetBrains Rider / ReSharper
+# --------------------------------------------------------------------------------
+
+# Rider user-specific files
+.idea/
+*.iws
+*.iml
+*.ipr
+*.iws
+
+# ReSharper and Rider cache
+_ReSharper.*/
+*.[Rr]eSharper
+*.DotSettings.user
+*.DotSettings
+*.userprefs
+*.suo
+*.userosscache
+
+# Rider temporary files
+.idea/.session
+.idea/shelf/
+.idea/patches/
+.idea/dictionaries/
+.idea/tasks/
+.idea/workspace.xml
+.idea/dataSources.local.xml
+
+# Rider cache and local settings
+cache/
+tmp/
+*.tmp
+*.cache
+*.swp
+*~
+
+# --------------------------------------------------------------------------------
+# Editor / OS
+# --------------------------------------------------------------------------------
+
+# OS generated
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Vim
+*.swp
+*.swo
+*.un~
+*.bak
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list/
+tramp
+.\#*
+
+# --------------------------------------------------------------------------------
+# Configurações locais (não devem ir para o repositório)
+# --------------------------------------------------------------------------------
+
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+*.pfx
+*.p12
+*.env
+.env.local
+.env.development
+.env.production
+
+# --------------------------------------------------------------------------------
+# Ferramentas de teste e cobertura
+# --------------------------------------------------------------------------------
+
+# Test results
+TestResult.xml
+TEST-*.xml
+TestResults/
+*.VisualState.xml
+TestContext.tctx
+
+# Cobertura
+.coverage
+*.coverage
+*.coveragexml
+
+# ReportGenerator
+Reports/
+report/
+coverage/
+CoverageResults/
+
+# --------------------------------------------------------------------------------
+# Ferramentas de F# específicas
+# --------------------------------------------------------------------------------
+
+# Ionide (VS Code)
+.fsi
+.fsx
+.fsproj.user
+.paket/
+.paket/paket.exe
+.paket/paket.bootstrapper.exe
+
+# Fake (F# Make)
+.fake/
+
+# Paket (gerenciador de pacotes)
+paket-files/
+
+# FunScript (legado)
+temp/
+
+# .NET Interactive (Jupyter)
+.jupyter/
+.ipynb_checkpoints/
+
+# --------------------------------------------------------------------------------
+# Docker
+# --------------------------------------------------------------------------------
+
+# Imagens locais
+.dockerignore
+!Dockerfile
+!docker-compose.yml
+!docker-compose.override.yml
+
+# --------------------------------------------------------------------------------
+# Misc
+# --------------------------------------------------------------------------------
+*.DS_Store
+.DS_Store
+.DS_Store?
+Icon?
+nohup.out
+*.swp
+*~
+*.tmp
+.DS_Store

@@ -5,6 +5,7 @@ open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Hosting
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Hosting
+open Routers.AppRouter
 
 let configureApp (app : IApplicationBuilder) =
     app.UseGiraffe webApp
