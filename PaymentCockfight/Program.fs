@@ -5,13 +5,14 @@ open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Hosting
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Hosting
+open PaymentCockfight.Services
 open Routers.AppRouter
 
 let configureApp (app : IApplicationBuilder) =
     app.UseGiraffe webApp
 
 let configureServices (services : IServiceCollection) =
-    // services.AddScoped<IPaymentProcessor, PaymentProcessor>() |> ignore
+    services.AddScoped<PaymentsProcessor>() |> ignore
     services.AddGiraffe() |> ignore
 
 [<EntryPoint>]

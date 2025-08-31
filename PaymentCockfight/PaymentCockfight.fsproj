@@ -5,9 +5,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Include="Models\Payment.fs" />
+        <Compile Include="Services\PaymentsProcessor.fs" />
         <Compile Include="Handlers\PaymentsHandler.fs" />
-        <Compile Include="Services\IPaymentProcessor.fs" />
-        <Compile Include="Services\PaymentProcessor.fs" />
         <Compile Include="Routers\AppRouter.fs" />
         <Compile Include="Program.fs"/>
     </ItemGroup>

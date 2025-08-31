@@ -2,6 +2,11 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "PaymentCockfight", "PaymentCockfight\PaymentCockfight.fsproj", "{7A3BBA72-D073-4FB2-BACB-364DADF086B0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Items", "Items", "{A0409514-7B19-46F2-B4FA-B63CC7310200}"
+	ProjectSection(SolutionItems) = preProject
+		tests.http = tests.http
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
