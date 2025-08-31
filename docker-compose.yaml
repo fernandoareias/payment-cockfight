@@ -1,0 +1,146 @@
+services:
+  nginx:
+    image: nginx:1.25-alpine
+    container_name: nginx
+    volumes:
+      - ./infrastructure/ngnix/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "9999:9999"
+    networks:
+      - backend
+      - payment-processor
+    deploy:
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: "10MB"
+
+  redpanda-console:
+    image: docker.redpanda.com/redpandadata/console:latest
+    ports:
+      - 8083:8080
+    environment:
+      KAFKA_BROKERS: "redpanda-0:9092"
+      SCHEMA_REGISTRY_ENABLED: "true"
+      SCHEMA_REGISTRY_URL: "http://schema-registry:8081"
+      CONSOLE_ENABLE_BASIC_AUTH: "false"
+    networks:
+      - backend
+      - payment-processor
+    deploy:
+      resources:
+        limits:
+          cpus: "0.15"
+          memory: "40MB"
+    depends_on:
+      - redpanda-0
+      - schema-registry
+
+
+  redpanda-0:
+    command:
+      - redpanda
+      - start
+      - --kafka-addr internal://0.0.0.0:9092,external://0.0.0.0:19092
+      - --advertise-kafka-addr internal://redpanda-0:9092,external://localhost:19092
+      - --pandaproxy-addr internal://0.0.0.0:8082,external://0.0.0.0:18082
+      - --advertise-pandaproxy-addr internal://redpanda-0:8082,external://localhost:18082
+      - --schema-registry-addr internal://0.0.0.0:8081,external://0.0.0.0:18081
+      - --rpc-addr redpanda-0:33145
+      - --advertise-rpc-addr redpanda-0:33145
+      - --mode dev-container
+      - --smp 1
+      - --default-log-level=info
+    image: docker.redpanda.com/redpandadata/redpanda:${REDPANDA_VERSION:-latest}
+    container_name: redpanda-0
+    volumes:
+      - ./infrastructure/kafka/redpanda-0:/var/lib/redpanda/data
+    networks:
+      - backend
+      - payment-processor
+    deploy:
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: "200MB"
+    ports:
+      - 18081:18081
+      - 18082:18082
+      - 19092:19092
+      - 19644:9644
+
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: MongoDB2025
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./infrastructure/mongodb:/data/db
+    networks:
+      - backend
+      - payment-processor
+    deploy:
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: "250MB"
+ 
+  app-1:
+    image: alpine:latest
+    container_name: app-1-placeholder
+    command: sleep infinity
+    networks:
+      - backend
+      - payment-processor
+    deploy:
+      resources:
+        limits:
+          cpus: "0.15"
+          memory: "40MB"
+
+  app-2:
+    image: alpine:latest
+    container_name: app-2-placeholder
+    command: sleep infinity
+    networks:
+      - backend
+      - payment-processor
+    deploy:
+      resources:
+        limits:
+          cpus: "0.15"
+          memory: "40MB"
+
+  schema-registry:
+    image: confluentinc/cp-schema-registry:latest
+    platform: linux/amd64
+    ports:
+      - 8081:8081
+    environment:
+      - SCHEMA_REGISTRY_HOST_NAME=schema-registry
+      - SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS=PLAINTEXT://redpanda-0:9092
+      - SCHEMA_REGISTRY_LISTENERS=http://0.0.0.0:8081
+      - SCHEMA_REGISTRY_KAFKASTORE_TIMEOUT_MS=30000
+      - SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_MAX_RETRIES=10
+      - SCHEMA_REGISTRY_KAFKASTORE_INIT_TIMEOUT_MS=60000
+    depends_on:
+      redpanda-0:
+        condition: service_healthy
+    networks:
+      - backend
+      - payment-processor
+    deploy:
+      resources:
+        limits:
+          cpus: "0.15"
+          memory: "50MB"
+    restart: unless-stopped
+
+
+networks:
+  backend:
+    driver: bridge
+  payment-processor:
+    driver: bridge
