@@ -1,10 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "Ti2Zr0N2AJM=",
+  "dgSpecHash": "zRAt8l0InbQ=",
   "success": true,
   "projectFilePath": "C:\\Git\\payment-cockfight\\PaymentCockfight\\PaymentCockfight\\PaymentCockfight.fsproj",
   "expectedPackageFiles": [
-    "C:\\Users\\gkss\\.nuget\\packages\\fsharp.core\\8.0.403\\fsharp.core.8.0.403.nupkg.sha512"
+    "C:\\Users\\gkss\\.nuget\\packages\\fsharp.core\\8.0.403\\fsharp.core.8.0.403.nupkg.sha512",
+    "C:\\Users\\gkss\\.nuget\\packages\\fsharp.systemtextjson\\1.3.13\\fsharp.systemtextjson.1.3.13.nupkg.sha512",
+    "C:\\Users\\gkss\\.nuget\\packages\\giraffe\\7.0.2\\giraffe.7.0.2.nupkg.sha512",
+    "C:\\Users\\gkss\\.nuget\\packages\\giraffe.viewengine\\1.4.0\\giraffe.viewengine.1.4.0.nupkg.sha512",
+    "C:\\Users\\gkss\\.nuget\\packages\\microsoft.io.recyclablememorystream\\3.0.1\\microsoft.io.recyclablememorystream.3.0.1.nupkg.sha512",
+    "C:\\Users\\gkss\\.nuget\\packages\\system.text.json\\8.0.5\\system.text.json.8.0.5.nupkg.sha512"
   ],
   "logs": []
 }

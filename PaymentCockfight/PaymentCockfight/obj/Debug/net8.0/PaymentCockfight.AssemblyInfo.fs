@@ -10,7 +10,7 @@ open System.Reflection
 [<assembly: System.Reflection.AssemblyCompanyAttribute("PaymentCockfight")>]
 [<assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")>]
 [<assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")>]
-[<assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9bc48a8b26597c43a168377f6413422b00167af4")>]
+[<assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8880a3767042ddd10f4df06351e1f7381cc43ed2")>]
 [<assembly: System.Reflection.AssemblyProductAttribute("PaymentCockfight")>]
 [<assembly: System.Reflection.AssemblyTitleAttribute("PaymentCockfight")>]
 [<assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")>]

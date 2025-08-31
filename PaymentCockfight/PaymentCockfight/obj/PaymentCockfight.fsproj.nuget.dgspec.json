@@ -44,6 +44,11 @@
               "target": "Package",
               "version": "[8.0.403, )",
               "generatePathProperty": true
+            },
+            "Giraffe": {
+              "target": "Package",
+              "version": "[7.0.2, )",
+              "generatePathProperty": true
             }
           },
           "imports": [

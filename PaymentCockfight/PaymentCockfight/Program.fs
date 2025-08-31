@@ -1,36 +1,27 @@
-namespace PaymentCockfight
-#nowarn "20"
-open System
-open System.Collections.Generic
-open System.IO
-open System.Linq
-open System.Threading.Tasks
-open Microsoft.AspNetCore
+module Program
+
+open Giraffe
 open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Hosting
-open Microsoft.AspNetCore.HttpsPolicy
-open Microsoft.Extensions.Configuration
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Hosting
-open Microsoft.Extensions.Logging
 
-module Program =
-    let exitCode = 0
+let configureApp (app : IApplicationBuilder) =
+    app.UseGiraffe webApp
 
-    [<EntryPoint>]
-    let main args =
+let configureServices (services : IServiceCollection) =
+    // services.AddScoped<IPaymentProcessor, PaymentProcessor>() |> ignore
+    services.AddGiraffe() |> ignore
 
-        let builder = WebApplication.CreateBuilder(args)
-
-        builder.Services.AddControllers()
-
-        let app = builder.Build()
-
-        app.UseHttpsRedirection()
-
-        app.UseAuthorization()
-        app.MapControllers()
-
-        app.Run()
-
-        exitCode
+[<EntryPoint>]
+let main _ =
+    Host.CreateDefaultBuilder()
+        .ConfigureWebHostDefaults(
+            fun webHostBuilder ->
+                webHostBuilder
+                    .Configure(configureApp)
+                    .ConfigureServices(configureServices)
+                    |> ignore)
+        .Build()
+        .Run()
+    0
